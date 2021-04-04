@@ -25,5 +25,16 @@ namespace Test.WebSite.Controllers
         {
             return ProductService.GetProducts();
         }
+
+        [Route("Rate")]
+        [HttpGet]
+        //[HttpPatch] "[FromBody"]
+        public ActionResult Get(
+            [FromQuery] string ProductId,
+            [FromQuery] int Rating)
+        {
+            ProductService.AddRating(ProductId, Rating);
+            return Ok();
+        }
     }
 }
